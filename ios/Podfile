@@ -40,4 +40,13 @@ target 'RNPOIMap' do
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
+
+  # Fix OpenSSL linking issues for people with case-sensitive filesystems
+  # https://github.com/facebook/react-native/issues/28409
+  # https://github.com/krzyzanowskim/OpenSSL/issues/117
+  unless File.exist? "pods"
+    Dir.glob('Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework/{ios,macos}*').each do|dir|
+      system("cd #{dir} && ln -sfh OpenSSL.framework openssl.framework")
+    end
+  end
 end
