@@ -14,8 +14,8 @@ const App = () => {
         initialCamera={{
           altitude: 10000,
           center: {
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude: 37.78808207143802,
+            longitude: -122.40752931300878,
           },
           heading: 0,
           pitch: 0,
@@ -23,9 +23,10 @@ const App = () => {
         onRegionChangeComplete={regionChange}
         showsPointsOfInterest={false}
         style={StyleSheet.absoluteFill}>
-        {/* Example marker */}
+
         <Marker
-          key={'foo'}
+          key='foo'
+          title='Example marker'
           coordinate={{
             latitude: 37.78808207143802,
             longitude: -122.40752931300878,
